@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Proyecto</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="form-container fade">
+
+    <h1>Editar Proyecto</h1>
+
+    <form method="POST" class="form-card">
+
+        <label>Nombre del proyecto:</label>
+        <input type="text" name="nombre" value="{{ proyecto.nombre }}" required>
+
+        <label>Fecha de inicio:</label>
+        <input type="date" name="fechaInicio" value="{{ proyecto.fechaInicio }}" required>
+
+        <label>Fecha de fin:</label>
+        <input type="date" name="fechaFin" value="{{ proyecto.fechaFin }}" required>
+
+        <label>Presupuesto:</label>
+        <input type="number" name="presupuesto" value="{{ proyecto.presupuesto }}" required>
+
+        <label>Encargado:</label>
+        <select name="encargadoId" class="input-select" required>
+            {% for e in encargados %}
+                <option value="{{ e._id }}" {% if proyecto.encargadoId == e._id|string %}selected{% endif %}>
+                    {{ e.nombre }} — {{ e.dpi }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button class="btn-primary">Guardar Cambios</button>
+    </form>
+
+    <a href="/ver-proyectos" class="btn-secondary">Volver</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Editar Familia</title>
+</head>
+
+<body>
+
+<div class="form-container fade">
+
+    <h1>Editar Familia</h1>
+
+    <form action="/editar-familia/{{ proyecto._id }}/{{ familia._id }}" method="POST" class="form-card">
+
+        <label>Dirección:</label>
+        <input type="text" name="direccion" value="{{ familia.direccion }}" required>
+
+        <label>Ingreso mensual:</label>
+        <input type="number" name="ingresoMensual" value="{{ familia.ingresoMensual }}" required>
+
+        <button class="btn-primary">Guardar Cambios</button>
+    </form>
+
+    <a href="{{ url_for('ver_proyectos') }}" class="btn-secondary">Volver</a>
+
+
+</div>
+
+</body>
+</html>

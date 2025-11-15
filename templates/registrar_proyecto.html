@@ -15,16 +15,23 @@
 
         <h3>Datos del Proyecto</h3>
         <input type="text" name="nombre" placeholder="Nombre del proyecto" required>
+
         <div class="form-row">
             <input type="date" name="fechaInicio" required>
             <input type="date" name="fechaFin" required>
         </div>
+
         <input type="number" name="presupuesto" placeholder="Presupuesto" required>
 
         <h3>Encargado del Proyecto</h3>
-        <input type="text" name="encargadoNombre" placeholder="Nombre del encargado" required>
-        <input type="text" name="encargadoDireccion" placeholder="Dirección" required>
-        <input type="text" name="encargadoDpi" placeholder="DPI" required>
+
+
+        <select name="encargadoId" required>
+            <option value="">Selecciona un encargado</option>
+            {% for e in encargados %}
+                <option value="{{ e._id }}">{{ e.nombre }} - {{ e.dpi }}</option>
+            {% endfor %}
+        </select>
 
         <button class="btn-primary">Guardar Proyecto</button>
     </form>

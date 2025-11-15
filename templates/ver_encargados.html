@@ -11,7 +11,7 @@
 
     <h1>Encargados Registrados</h1>
 
-    <a href="/registrar-encargado" class="btn-primary"> Agregar Encargado</a>
+    <a href="/registrar-encargado" class="btn-primary">Agregar Encargado</a>
     <br><br>
 
     {% if encargados|length == 0 %}
@@ -27,11 +27,25 @@
         <div class="card-body">
             <p><strong>DPI:</strong> {{ e.dpi }}</p>
             <p><strong>Dirección:</strong> {{ e.direccion }}</p>
+
+            <div class="card-actions">
+                <a href="/editar-encargado/{{ e._id|string }}" class="btn-primary">Editar</a>
+
+
+                <form action="/eliminar-encargado/{{ e._id|string }}"
+                      method="POST" style="display:inline;">
+                    <button class="btn-danger"
+                            onclick="return confirm('¿Eliminar encargado?')">
+                        Eliminar
+                    </button>
+                </form>
+
+            </div>
         </div>
     </div>
     {% endfor %}
 
-    <a href="/" class="btn-secondary">⬅ Volver</a>
+    <a href="/ver-proyectos" class="btn-secondary">Volver</a>
 
 </div>
 

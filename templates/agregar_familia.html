@@ -27,10 +27,10 @@
 
     <h1>Agregar Familias Beneficiadas</h1>
 
-    <form action="/agregar-familia/{{ proyecto._id }}" method="POST" class="form-card">
+    <form action="/agregar-familias/{{ proyecto._id }}" method="POST" class="form-card">
 
         <div id="familias-container">
-            <!-- Primer bloque por defecto -->
+         
             <div class="familia-block">
                 <input type="text" name="direccion[]" placeholder="Dirección" required>
                 <input type="number" name="ingresoMensual[]" placeholder="Ingreso mensual" required>
@@ -39,7 +39,7 @@
         </div>
 
         <button type="button" onclick="agregarCampos()" class="btn-secondary">
-            ➕ Agregar otra familia
+            Agregar otra familia
         </button>
 
         <br><br>
@@ -47,7 +47,7 @@
         <button class="btn-primary">Guardar Familias</button>
     </form>
 
-    <a href="/ver-proyectos" class="btn-secondary">⬅ Volver</a>
+    <a href="/ver-proyectos" class="btn-secondary">Volver</a>
 
 </div>
 

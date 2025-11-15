@@ -9,7 +9,7 @@
 
 <div class="list-container fade">
 
-    <h1>📋 Proyectos Registrados</h1>
+    <h1>Proyectos Registrados</h1>
 
     {% if proyectos|length == 0 %}
         <p class="empty">No hay proyectos registrados aún.</p>
@@ -27,37 +27,92 @@
 
         <div class="card-body">
 
-            <p><strong>Id:</strong> {{ p._id }}</p>
+            <p><strong>ID:</strong> {{ p._id }}</p>
 
+            {% if p.fechaInicio %}
             <p><strong>Fecha Inicio:</strong> {{ p.fechaInicio }}</p>
+            {% endif %}
+
+            {% if p.fechaFin %}
             <p><strong>Fecha Fin:</strong> {{ p.fechaFin }}</p>
+            {% endif %}
+
+            {% if p.presupuesto %}
             <p><strong>Presupuesto:</strong> Q{{ p.presupuesto }}</p>
+            {% endif %}
 
             <hr>
 
             <h3>Encargado</h3>
+            {% if p.encargado %}
             <p><strong>Nombre:</strong> {{ p.encargado.nombre }}</p>
             <p><strong>DPI:</strong> {{ p.encargado.dpi }}</p>
             <p><strong>Dirección:</strong> {{ p.encargado.direccion }}</p>
+            {% else %}
+            <p class="empty">Sin encargado asignado</p>
+            {% endif %}
 
             <hr>
 
             <h3>Familias beneficiadas</h3>
 
-            <ul>
+            <ul class="family-list">
+
+                {% if p.familiasBeneficiadas|length == 0 %}
+                    <p class="empty">No hay familias registradas</p>
+                {% endif %}
+
                 {% for f in p.familiasBeneficiadas %}
-                    <li>🏠 {{ f.direccion }} &nbsp;&nbsp; | &nbsp;&nbsp; 💰 Q{{ f.ingresoMensual }}</li>
+                <li>
+                    🏠 {{ f.direccion }} &nbsp; | &nbsp; Q{{ f.ingresoMensual }}
+
+                
+                    <a class="btn-mini" 
+                        href="/editar-familia/{{ p._id|string }}/{{ loop.index0 }}">
+                        Editar
+                    </a>
+
+
+              
+                    <form action="/eliminar-familia/{{ p._id|string }}/{{ loop.index0 }}"
+                          method="POST" class="inline-form">
+                        <button class="btn-mini-danger">Eliminar</button>
+                    </form>
+
+                    
+                </li>
                 {% endfor %}
             </ul>
 
-            <a class="btn-small" href="/agregar-familia/{{ p._id }}">➕ Agregar Familia</a>
+            <a class="btn-small" href="/agregar-familias/{{ p._id|string }}"> Agregar Familias</a>
+            
+
+            <hr>
+
+            <div class="project-actions">
+
+                {% if not p.finalizado %}
+                <form action="/finalizar-proyecto/{{ p._id|string }}" method="POST">
+                    <button class="btn-primary">Marcar como Finalizado</button>
+                </form>
+                {% endif %}
+                <a class="btn-small" href="/editar-proyecto/{{ p._id }}"> Editar Proyecto</a>
+
+                <form action="/eliminar-proyecto/{{ p._id|string }}" method="POST">
+                    <button class="btn-danger">Eliminar Proyecto</button>
+                </form>
+
+
+
+            </div>
+
         </div>
     </div>
     {% endfor %}
 
     <div class="actions">
-        <a href="/" class="btn-secondary">⬅ Volver</a>
-        <a href="/ver-encargados" class="btn-primary">👤 Ver Encargados</a>
+        <a href="/" class="btn-secondary">Volver</a>
+        <a href="/ver-encargados" class="btn-primary">Ver Encargados</a>
     </div>
 
 </div>

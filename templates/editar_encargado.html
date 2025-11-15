@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Editar Encargado</title>
+</head>
+<body>
+
+<div class="form-container fade">
+
+    <h1>Editar Encargado</h1>
+
+    <form action="/editar-encargado/{{ encargado._id }}" method="POST" class="form-card">
+        <input type="text" name="nombre" value="{{ encargado.nombre }}" required>
+        <input type="text" name="dpi" value="{{ encargado.dpi }}" required>
+        <input type="text" name="direccion" value="{{ encargado.direccion }}" required>
+        <button class="btn-primary">Guardar Cambios</button>
+    </form>
+
+    <a href="/ver-encargados" class="btn-secondary">Volver</a>
+
+</div>
+
+</body>
+</html>
