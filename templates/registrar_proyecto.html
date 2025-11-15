@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Nuevo Proyecto</title>
+</head>
+<body>
+
+<div class="form-container fade">
+
+    <h1>Registrar Proyecto</h1>
+
+    <form action="/registrar-proyecto" method="POST" class="form-card">
+
+        <h3>Datos del Proyecto</h3>
+        <input type="text" name="nombre" placeholder="Nombre del proyecto" required>
+        <div class="form-row">
+            <input type="date" name="fechaInicio" required>
+            <input type="date" name="fechaFin" required>
+        </div>
+        <input type="number" name="presupuesto" placeholder="Presupuesto" required>
+
+        <h3>Encargado del Proyecto</h3>
+        <input type="text" name="encargadoNombre" placeholder="Nombre del encargado" required>
+        <input type="text" name="encargadoDireccion" placeholder="Dirección" required>
+        <input type="text" name="encargadoDpi" placeholder="DPI" required>
+
+        <button class="btn-primary">Guardar Proyecto</button>
+    </form>
+
+    <a href="/" class="btn-secondary">Volver</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Encargados Registrados</title>
+</head>
+<body>
+
+<div class="list-container fade">
+
+    <h1>Encargados Registrados</h1>
+
+    <a href="/registrar-encargado" class="btn-primary"> Agregar Encargado</a>
+    <br><br>
+
+    {% if encargados|length == 0 %}
+        <p class="empty">No hay encargados registrados aún.</p>
+    {% endif %}
+
+    {% for e in encargados %}
+    <div class="project-card">
+        <header>
+            <h2>{{ e.nombre }}</h2>
+        </header>
+
+        <div class="card-body">
+            <p><strong>DPI:</strong> {{ e.dpi }}</p>
+            <p><strong>Dirección:</strong> {{ e.direccion }}</p>
+        </div>
+    </div>
+    {% endfor %}
+
+    <a href="/" class="btn-secondary">⬅ Volver</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #0d1117;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 { font-weight: 600; }
+
+.fade { animation: fadeIn .6s ease-in-out; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.menu-container {
+    text-align: center;
+    padding-top: 60px;
+}
+
+.menu-grid {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.menu-card {
+    background: #161b22;
+    width: 290px;
+    padding: 25px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #fff;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px rgba(0, 153, 255, .4);
+}
+
+
+.form-container {
+    width: 420px;
+    margin: auto;
+    padding-top: 40px;
+}
+
+.form-card {
+    background: #161b22;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 0 15px rgba(0,0,0,.4);
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #0d1117;
+    color: white;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+
+
+.list-container {
+    width: 900px;
+    margin: auto;
+    padding-top: 40px;
+}
+
+.project-card {
+    background: #161b22;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+}
+
+.project-card header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estado del proyecto */
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: white;
+}
+
+.active { background: #007bff; }
+.finished { background: #2ecc71; }
+
+
+.btn-primary,
+.btn-secondary,
+.btn-small {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary { background: #007bff; color: white; }
+.btn-secondary { background: #6c757d; color: white; }
+.btn-small { background: #238636; color: white; }
+
+.btn-primary:hover { background: #005fcc; }
+.btn-secondary:hover { background: #5a6268; }
+.btn-small:hover { background: #1f7a30; }

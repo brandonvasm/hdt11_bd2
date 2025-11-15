@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Proyectos Registrados</title>
+</head>
+<body>
+
+<div class="list-container fade">
+
+    <h1>📋 Proyectos Registrados</h1>
+
+    {% if proyectos|length == 0 %}
+        <p class="empty">No hay proyectos registrados aún.</p>
+    {% endif %}
+
+    {% for p in proyectos %}
+    <div class="project-card">
+
+        <header>
+            <h2>{{ p.nombre }}</h2>
+            <span class="badge {{ 'finished' if p.finalizado else 'active' }}">
+                {{ 'Finalizado' if p.finalizado else 'Activo' }}
+            </span>
+        </header>
+
+        <div class="card-body">
+
+            <p><strong>Id:</strong> {{ p._id }}</p>
+
+            <p><strong>Fecha Inicio:</strong> {{ p.fechaInicio }}</p>
+            <p><strong>Fecha Fin:</strong> {{ p.fechaFin }}</p>
+            <p><strong>Presupuesto:</strong> Q{{ p.presupuesto }}</p>
+
+            <hr>
+
+            <h3>Encargado</h3>
+            <p><strong>Nombre:</strong> {{ p.encargado.nombre }}</p>
+            <p><strong>DPI:</strong> {{ p.encargado.dpi }}</p>
+            <p><strong>Dirección:</strong> {{ p.encargado.direccion }}</p>
+
+            <hr>
+
+            <h3>Familias beneficiadas</h3>
+
+            <ul>
+                {% for f in p.familiasBeneficiadas %}
+                    <li>🏠 {{ f.direccion }} &nbsp;&nbsp; | &nbsp;&nbsp; 💰 Q{{ f.ingresoMensual }}</li>
+                {% endfor %}
+            </ul>
+
+            <a class="btn-small" href="/agregar-familia/{{ p._id }}">➕ Agregar Familia</a>
+        </div>
+    </div>
+    {% endfor %}
+
+    <div class="actions">
+        <a href="/" class="btn-secondary">⬅ Volver</a>
+        <a href="/ver-encargados" class="btn-primary">👤 Ver Encargados</a>
+    </div>
+
+</div>
+
+</body>
+</html>

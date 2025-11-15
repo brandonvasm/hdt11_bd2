@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Panel</title>
+</head>
+<body>
+
+<div class="menu-container fade">
+
+    <h1>Gestión de Proyectos</h1>
+    <p class="subtitle">Sitemap de registro para proyectos sociales</p>
+
+    <div class="menu-grid">
+        <a class="menu-card" href="/registrar-proyecto">
+            <h2> Registrar Proyecto</h2>
+            <p>Crear un nuevo proyecto con encargado y familias beneficiadas.</p>
+        </a>
+
+        <a class="menu-card" href="/ver-proyectos">
+            <h2> Ver Proyectos</h2>
+            <p>Consultar proyectos activos y agregar beneficiarios.</p>
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Registrar Encargado</title>
+</head>
+<body>
+
+<div class="form-container fade">
+
+    <h1>Registrar Encargado</h1>
+
+    <form action="/registrar-encargado" method="POST" class="form-card">
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="text" name="dpi" placeholder="DPI" required>
+        <input type="text" name="direccion" placeholder="Dirección" required>
+        <button class="btn-primary">Registrar</button>
+    </form>
+
+    <a href="/ver-encargados" class="btn-secondary">⬅ Volver</a>
+
+</div>
+
+</body>
+</html>

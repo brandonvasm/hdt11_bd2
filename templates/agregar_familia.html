@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Agregar Familias</title>
+
+    <script>
+        function agregarCampos() {
+            const contenedor = document.getElementById("familias-container");
+            const bloque = document.createElement("div");
+
+            bloque.classList.add("familia-block");
+            bloque.innerHTML = `
+                <input type="text" name="direccion[]" placeholder="Dirección" required>
+                <input type="number" name="ingresoMensual[]" placeholder="Ingreso mensual" required>
+                <hr>
+            `;
+
+            contenedor.appendChild(bloque);
+        }
+    </script>
+</head>
+<body>
+
+<div class="form-container fade">
+
+    <h1>Agregar Familias Beneficiadas</h1>
+
+    <form action="/agregar-familia/{{ proyecto._id }}" method="POST" class="form-card">
+
+        <div id="familias-container">
+            <!-- Primer bloque por defecto -->
+            <div class="familia-block">
+                <input type="text" name="direccion[]" placeholder="Dirección" required>
+                <input type="number" name="ingresoMensual[]" placeholder="Ingreso mensual" required>
+                <hr>
+            </div>
+        </div>
+
+        <button type="button" onclick="agregarCampos()" class="btn-secondary">
+            ➕ Agregar otra familia
+        </button>
+
+        <br><br>
+
+        <button class="btn-primary">Guardar Familias</button>
+    </form>
+
+    <a href="/ver-proyectos" class="btn-secondary">⬅ Volver</a>
+
+</div>
+
+</body>
+</html>
